@@ -1,0 +1,35 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
+final_space: true
+version: 2
+blocks:
+  - type: prompt
+    alignment: left
+    newline: false
+    segments:
+      - type: session
+        style: diamond
+        template: " {{if .SSHSession}}SSH {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}} "
+        foreground: yellow
+        leading_diamond: "<lightWhite>></>"
+      - type: path
+        style: plain
+        properties:
+          style: folder
+        template: "\uf114 {{.Path}} "
+        foreground: lightMagenta
+      - type: git
+        style: plain
+        foreground: lightCyan
+        properties:
+          branch_icon: ""
+        template: "\uf418 {{.HEAD}} "
+      - type: time
+        style: plain
+        foreground: lightBlue
+        properties:
+          time_format: 15:04:05
+        template: "\ue641 {{ .CurrentDate | date .Format }} "
+      - type: text
+        style: plain
+        foreground: lightWhite
+        template: ">"
