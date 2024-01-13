@@ -22,7 +22,8 @@ blocks:
         properties:
           branch_icon: ""
           fetch_status: true
-        template: "[<lightBlue>\uf418 {{.HEAD}}{{if .Working.Changed}} \uf448 {{.Working.String}}{{end}}{{if .Staging.Changed}} \uf00c {{.Staging.String}}{{end}}</>]-"
+          # fetch_upstream_icon: true
+        template: "[<lightBlue>\uf418 {{.HEAD}}{{if .BranchStatus}} {{.BranchStatus}}{{end}}{{if .Working.Changed}} \uf448 {{.Working.String}}{{end}}{{if .Staging.Changed}} \uf00c {{.Staging.String}}{{end}}</>]-"
       - type: time
         style: plain
         foreground: white
