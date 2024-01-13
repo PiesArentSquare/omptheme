@@ -8,28 +8,28 @@ blocks:
     segments:
       - type: session
         style: diamond
-        template: " {{if .SSHSession}}SSH {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}} "
-        foreground: yellow
-        leading_diamond: "<lightWhite>></>"
+        template: "[<yellow>{{if .SSHSession}}SSH {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}}</>]-"
+        foreground: white
       - type: path
         style: plain
         properties:
           style: folder
-        template: "\uf114 {{.Path}} "
-        foreground: lightMagenta
+        template: "[<lightMagenta>\uf114 {{.Path}}</>]-"
+        foreground: white
       - type: git
         style: plain
-        foreground: lightCyan
+        foreground: white
         properties:
           branch_icon: ""
-        template: "\uf418 {{.HEAD}} "
+          fetch_status: true
+        template: "[<lightBlue>\uf418 {{.HEAD}}{{if .Working.Changed}} \uf448 {{.Working.String}}{{end}}{{if .Staging.Changed}} \uf00c {{.Staging.String}}{{end}}</>]-"
       - type: time
         style: plain
-        foreground: lightBlue
+        foreground: white
         properties:
           time_format: 15:04:05
-        template: "\ue641 {{ .CurrentDate | date .Format }} "
+        template: "[<lightCyan>\ue641 {{ .CurrentDate | date .Format }}</>]-"
       - type: text
         style: plain
-        foreground: lightWhite
-        template: ">"
+        foreground: white
+        template: ":"
