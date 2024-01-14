@@ -8,7 +8,7 @@ blocks:
     segments:
       - type: session
         style: diamond
-        template: "[<yellow>{{if .SSHSession}}SSH {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}}</>]—"
+        template: "[<yellow>{{if .SSHSession}}\ueb3a {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}}</>]—"
         foreground: white
       - type: path
         style: plain
