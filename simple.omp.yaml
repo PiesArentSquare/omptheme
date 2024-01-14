@@ -8,13 +8,13 @@ blocks:
     segments:
       - type: session
         style: diamond
-        template: "[<yellow>{{if .SSHSession}}SSH {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}}</>]-"
+        template: "[<yellow>{{if .SSHSession}}SSH {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}}</>]—"
         foreground: white
       - type: path
         style: plain
         properties:
           style: folder
-        template: "[<lightMagenta>\uf114 {{.Path}}</>]-"
+        template: "[<lightMagenta>\uf114 {{.Path}}</>]—"
         foreground: white
       - type: git
         style: plain
@@ -22,14 +22,13 @@ blocks:
         properties:
           branch_icon: ""
           fetch_status: true
-          # fetch_upstream_icon: true
-        template: "[<lightBlue>\uf418 {{.HEAD}}{{if .BranchStatus}} {{.BranchStatus}}{{end}}{{if .Working.Changed}} \uf448 {{.Working.String}}{{end}}{{if .Staging.Changed}} \uf00c {{.Staging.String}}{{end}}</>]-"
+        template: "[<lightBlue>\uf418 {{.HEAD}}{{if .BranchStatus}} {{.BranchStatus}}{{end}}{{if .Working.Changed}} \uf448 {{.Working.String}}{{end}}{{if .Staging.Changed}} \uf00c {{.Staging.String}}{{end}}</>]—"
       - type: time
         style: plain
         foreground: white
         properties:
           time_format: 15:04:05
-        template: "[<lightCyan>\ue641 {{ .CurrentDate | date .Format }}</>]-"
+        template: "[<lightCyan>\ue641 {{ .CurrentDate | date .Format }}</>]—"
       - type: text
         style: plain
         foreground: white
