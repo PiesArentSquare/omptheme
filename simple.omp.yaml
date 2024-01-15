@@ -1,6 +1,15 @@
 # yaml-language-server: $schema=https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json
 final_space: true
 version: 2
+palette:
+  yellow: "#ffd47f"
+  green: "#a5ff7f"
+
+  session: "#ff7f90"
+  path: p:yellow
+  git: p:green
+  time: "#7fffff"
+  neutral: "#ffffff"
 blocks:
   - type: prompt
     alignment: left
@@ -8,28 +17,24 @@ blocks:
     segments:
       - type: session
         style: diamond
-        template: "[<yellow>{{if .SSHSession}}\ueb3a {{end}}<lightYellow>{{.UserName}}</>@{{.HostName}}</>]—"
-        foreground: white
+        foreground: p:session
+        template: "{{if .SSHSession}}SSH {{end}}{{.UserName}}{{if .SSHSession}}@{{.HostName}}{{end}}</> "
       - type: path
         style: plain
+        foreground: p:path
         properties:
           style: folder
-        template: "[<lightMagenta>\uf114 {{.Path}}</>]—"
-        foreground: white
+        template: "<p:neutral>in</> {{.Path}}/ "
       - type: git
         style: plain
-        foreground: white
+        foreground: p:git
         properties:
           branch_icon: ""
           fetch_status: true
-        template: "[<lightBlue>\uf418 {{.HEAD}}{{if .BranchStatus}} {{.BranchStatus}}{{end}}{{if .Working.Changed}} \uf448 {{.Working.String}}{{end}}{{if .Staging.Changed}} \uf00c {{.Staging.String}}{{end}}</>]—"
+        template: "<p:neutral>on</> {{.HEAD}}{{if or .BranchStatus .Working.Changed .Staging.Changed}}<p:neutral>[</>{{if .BranchStatus}}{{.BranchStatus}} {{end}}{{if .Working.Changed}}<p:yellow>* {{.Working.String}}</>{{end}}{{if .Staging.Changed}} <p:green>✓ {{.Staging.String}}</>{{end}}<p:neutral>]</>{{end}} "
       - type: time
         style: plain
-        foreground: white
+        foreground: p:time
         properties:
           time_format: 15:04:05
-        template: "[<lightCyan>\ue641 {{ .CurrentDate | date .Format }}</>]—"
-      - type: text
-        style: plain
-        foreground: white
-        template: ":"
+        template: "<p:neutral>at</> {{ .CurrentDate | date .Format }} <p:neutral>></>"
