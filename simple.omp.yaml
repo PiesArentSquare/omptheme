@@ -31,7 +31,7 @@ blocks:
         properties:
           branch_icon: ""
           fetch_status: true
-        template: "<p:neutral>on</> {{.HEAD}}{{if or .BranchStatus .Working.Changed .Staging.Changed}}<p:neutral>[</>{{if .BranchStatus}}{{.BranchStatus}} {{end}}{{if .Working.Changed}}<p:yellow>* {{.Working.String}}</>{{end}}{{if .Staging.Changed}} <p:green>✓ {{.Staging.String}}</>{{end}}<p:neutral>]</>{{end}} "
+        template: "<p:neutral>on {{if .Ahead}}↑{{end}}{{if .Behind}}↓{{end}}</>{{.HEAD}}{{if or .Working.Changed .Staging.Changed}}<p:neutral>(</>{{if .Working.Changed}}<p:yellow>* {{.Working.String}}</>{{end}}{{if and .Working.Changed .Staging.Changed}}<p:neutral>|</>{{end}}{{if .Staging.Changed}}<p:green>✓ {{.Staging.String}}</>{{end}}<p:neutral>)</>{{end}} "
       - type: time
         style: plain
         foreground: p:time
